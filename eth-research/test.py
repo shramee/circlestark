@@ -199,6 +199,11 @@ def test_mk_stark():
     stark = mk_stark(check_constraint, trace, constants, public_args=(0,99), H_degree=4)
     vk = get_vk(trace.shape, constants, 3, (0,99), H_degree=4)
     print("Verifying STARK")
+    print("----------------------------------")
+    print(vk)
+    # print(trace[array((0,99))])
+    # print(stark)
+    print("----------------------------------")
     assert verify_stark(check_constraint, vk, trace[array((0,99))], stark)
     print("Verified!")
 

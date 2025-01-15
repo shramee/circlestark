@@ -149,7 +149,7 @@ def fill_poseidon_trace(hash_inputs, positions):
         trace[:,80+i] = (pow5(m) - m) % M31
 
     # Last four rounds (plus the matmul of the previous round)
-    for i in range(4):
+    for i in range(4):8
         if i == 0:
             _prev = _matmul(
                 np.hstack((ones, trace[:,64:136])),
