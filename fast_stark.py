@@ -143,7 +143,11 @@ def mk_stark(check_constraint,
     rolled_trace_ext = append(trace_ext[ext_degree:], trace_ext[:ext_degree])
     # Zero on the last two columns of the trace. We multiply this into C
     # to make it zero across the entire trace
-    np.cuda.synchronize()
+    if np.cuda.is_available():
+        np.cuda.synchronize()
+    else:
+        np.cpu.synchronize()
+
 
     # We Merkelize the trace quotient (CPU-dominant) and compute C
     # (GPU-dominant) in parallel
